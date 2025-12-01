@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercícios JavaScript Darck Woman</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #1e1e1e;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            font-size: 17px;
+            border: none;
+            background: #2d2d2d;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        button:hover {
+            background: #3f3f3f;
+        }
+
+        #resultado {
+            background: #2b2b2b;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            min-height: 80px;
+            border: 1px solid #444;
+            font-size: 18px;
+        }
+
+        .emoji {
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🔥 Exercícios JavaScript – Dark Woman</h1>
+
+        <button onclick="ex1()"><span class="emoji">➕➖</span> 1. Número positivo, negativo ou zero</button>
+        <button onclick="ex2()"><span class="emoji">🎂</span> 2. Verificar maioridade</button>
+        <button onclick="ex3()"><span class="emoji">🔢</span> 3. Par ou ímpar</button>
+        <button onclick="ex4()"><span class="emoji">⚖️</span> 4. Comparar dois números</button>
+        <button onclick="ex5()"><span class="emoji">📊</span> 5. Classificação de nota</button>
+        <button onclick="ex6()"><span class="emoji">⚕️</span> 6. Calculadora de IMC</button>
+        <button onclick="ex7()"><span class="emoji">🧮</span> 7. Calculadora Simples (Switch)</button>
+        <button onclick="ex8()"><span class="emoji">📅</span> 8. Dia da Semana (Switch)</button>
+        <button onclick="ex9()"><span class="emoji">🔗</span> 9. Verificar múltiplos</button>
+        <button onclick="ex10()"><span class="emoji">🔐</span> 10. Sistema de login</button>
+
+        <div id="resultado">👈 Clique em um exercício para começar.</div>
+    </div>
+
+    <script>
+        function mostrar(msg) {
+            document.getElementById("resultado").innerHTML = msg;
+            console.log(msg);
+        }
+
+        // 1
+        function ex1() {
+            let n = Number(prompt("Digite um número:"));
+            if (n > 0) mostrar("🔵 O número é POSITIVO");
+            else if (n < 0) mostrar("🔴 O número é NEGATIVO");
+            else mostrar("⚪ O número é ZERO");
+        }
+
+        // 2
+        function ex2() {
+            let idade = Number(prompt("Digite sua idade:"));
+            if (idade >= 18) mostrar("🟢 Maior de idade");
+            else mostrar("🟡 Menor de idade");
+        }
+
+        // 3
+        function ex3() {
+            let n = Number(prompt("Digite um número:"));
+            if (n % 2 === 0) mostrar("🔵 Número PAR");
+            else mostrar("🟠 Número ÍMPAR");
+        }
+
+        // 4
+        function ex4() {
+            let a = Number(prompt("Digite o primeiro número:"));
+            let b = Number(prompt("Digite o segundo número:"));
+
+            if (a > b) mostrar("➡️ O primeiro número é maior");
+            else if (b > a) mostrar("⬅️ O segundo número é maior");
+            else mostrar("🟰 Os números são IGUAIS");
+        }
+
+        // 5
+        function ex5() {
+            let nota = Number(prompt("Digite uma nota de 0 a 10:"));
+
+            if (nota >= 0 && nota <= 4) mostrar("🔴 Nota baixa");
+            else if (nota >= 5 && nota <= 7) mostrar("🟡 Nota média");
+            else if (nota >= 8 && nota <= 10) mostrar("🟢 Nota alta");
+            else mostrar("❌ Nota inválida!");
+        }
+
+        // 6
+        function ex6() {
+            let peso = Number(prompt("Digite seu peso (kg):"));
+            let altura = Number(prompt("Digite sua altura (m):"));
+            let imc = peso / (altura * altura);
+
+            let c = "";
+
+            if (imc < 18.5) c = "Abaixo do peso";
+            else if (imc < 25) c = "Peso normal";
+            else c = "Acima do peso";
+
+            mostrar(`⚕️ Seu IMC é: <b>${imc.toFixed(2)}</b><br>${c}`);
+        }
+
+        // 7
+        function ex7() {
+            let n1 = Number(prompt("Digite o primeiro número:"));
+            let n2 = Number(prompt("Digite o segundo número:"));
+            let op = prompt("Digite a operação (+, -, *, /):");
+
+            let r;
+
+            switch (op) {
+                case "+": r = n1 + n2; break;
+                case "-": r = n1 - n2; break;
+                case "*": r = n1 * n2; break;
+                case "/": r = n1 / n2; break;
+                default:
+                    mostrar("❌ Operação inválida!");
+                    return;
+            }
+
+            mostrar(`🧮 Resultado: <b>${r}</b>`);
+        }
+
+        // 8
+        function ex8() {
+            let dia = Number(prompt("Digite um número de 1 a 7:"));
+            let nome;
+
+            switch (dia) {
+                case 1: nome = "Domingo"; break;
+                case 2: nome = "Segunda-feira"; break;
+                case 3: nome = "Terça-feira"; break;
+                case 4: nome = "Quarta-feira"; break;
+                case 5: nome = "Quinta-feira"; break;
+                case 6: nome = "Sexta-feira"; break;
+                case 7: nome = "Sábado"; break;
+                default: nome = "Número inválido!";
+            }
+
+            mostrar(`📅 Dia escolhido: <b>${nome}</b>`);
+        }
+
+        // 9
+        function ex9() {
+            let n1 = Number(prompt("Digite o primeiro número:"));
+            let n2 = Number(prompt("Digite o segundo número:"));
+
+            if (n1 % n2 === 0)
+                mostrar(`🔗 ${n1} É múltiplo de ${n2}`);
+            else
+                mostrar(`❌ ${n1} NÃO é múltiplo de ${n2}`);
+        }
+
+        // 10
+        function ex10() {
+            let user = prompt("Digite o nome de usuário:");
+            let senha = prompt("Digite a senha:");
+
+            let u = "admin";
+            let s = "1234";
+
+            if (user === u && senha === s)
+                mostrar("🔐 Login bem-sucedido! ✔️");
+            else
+                mostrar("❌ Usuário ou senha incorretos.");
+        }
+    </script>
+
+</body>
+</html>
